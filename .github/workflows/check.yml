@@ -1,0 +1,27 @@
+name: oracle-a1-capacity
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # her 10 dk (private repo 2000 dk/ay kotasina sigar)
+  workflow_dispatch:          # elle tetikleme
+
+concurrency:
+  group: a1-hunt
+  cancel-in-progress: false
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install --quiet -r requirements.txt
+      - run: python check_capacity.py
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          OCI_KEY_B64: ${{ secrets.OCI_KEY_B64 }}

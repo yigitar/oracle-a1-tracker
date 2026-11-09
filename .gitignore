@@ -1,0 +1,7 @@
+# secrets / keys — ASLA commit edilmez
+*.pem
+*.key
+.oci/
+oci_key_b64.txt
+__pycache__/
+*.pyc
