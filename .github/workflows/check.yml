@@ -2,7 +2,7 @@ name: oracle-a1-capacity
 
 on:
   schedule:
-    - cron: '*/10 * * * *'   # her 10 dk (private repo 2000 dk/ay kotasina sigar)
+    - cron: '*/5 * * * *'    # her 5 dk (public repo -> Actions dakikasi SINIRSIZ)
   workflow_dispatch:          # elle tetikleme
 
 concurrency:
@@ -25,3 +25,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           OCI_KEY_B64: ${{ secrets.OCI_KEY_B64 }}
+          OCI_USER: ${{ secrets.OCI_USER }}
+          OCI_FINGERPRINT: ${{ secrets.OCI_FINGERPRINT }}
+          OCI_TENANCY: ${{ secrets.OCI_TENANCY }}
+          OCI_SUBNET: ${{ secrets.OCI_SUBNET }}

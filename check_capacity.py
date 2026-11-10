@@ -16,14 +16,16 @@ import urllib.request
 
 import oci
 
-# --- Hesaba özgü (gizli olmayan) tanımlayıcılar — private repo ---
+# --- Hesaba ÖZGÜ tanımlayıcılar: GÜVENLİ PUBLIC için SECRET'tan gelir (kodda yok) ---
+USER    = os.environ["OCI_USER"]
+FINGER  = os.environ["OCI_FINGERPRINT"]
+TENANCY = os.environ["OCI_TENANCY"]
+SUBNET  = os.environ["OCI_SUBNET"]
+
+# --- Gizli OLMAYAN sabitler (public bölge/AD + genel Oracle image + public SSH key) ---
 REGION  = "ap-singapore-1"
-USER    = "ocid1.user.oc1..aaaaaaaaozb3ny6m75qaalo7volfnvnuxvtdtirv2bvgoyfcqknizt2ien6a"
-FINGER  = "92:2b:34:29:97:b0:03:22:4b:64:d8:94:26:73:4c:7e"
-TENANCY = "ocid1.tenancy.oc1..aaaaaaaadtqny7jv7f76foydwj74t727rapjehlujpu4kyvb7dojtbzj4bha"
 AD      = "vhBU:AP-SINGAPORE-1-AD-1"
 IMAGE   = "ocid1.image.oc1.ap-singapore-1.aaaaaaaamynzciw3t7fypsdqahuupzsvbv5ewlubquu3ksfqugxchksgxm4q"
-SUBNET  = "ocid1.subnet.oc1.ap-singapore-1.aaaaaaaaiorkinj5x5wpqprnhzwwy3dkxdw6syzfh6bzw4rayit7netbvkvq"
 SSH_PUB = ("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5W38wnRCOBLq5nh1kIV/OMyBsfBjQ9WVhD6UAQS3D/"
            "VZUJUfpLJl49l9pvnKvPSy3h8B/feG1wIQ4ibcZaty+EqAKRyOGi3Rcj8msN7UvPYqlkMCS5owTsbNzijFpffah12l"
            "DZXfVPhaeTGxoNg5GAOnLP+v6qSc/VEMvMxlB8HSnUz6EHLCOilgoGi3EuqYlbZb0YnEYmxmihggUM6tgrG1PQ1QXC"
